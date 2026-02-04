@@ -1,0 +1,234 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(2, 4, 7, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all $transition-normal $easing-default;
+
+  &.scrolled {
+    background: rgba(2, 4, 7, 0.85);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.nav {
+  width: 100%;
+}
+
+.container {
+  @include container;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-md $spacing-lg;
+  max-width: 1440px;
+
+  @include desktop {
+    padding: $spacing-lg $spacing-3xl;
+  }
+}
+
+.logo {
+  font-family: 'Paperozi', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: $font-weight-extrabold;
+  color: #ffffff;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color $transition-normal $easing-default;
+
+  &:hover {
+    color: $color-accent-primary;
+  }
+
+  @include focus-visible;
+}
+
+.menu {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: $spacing-xl;
+  align-items: center;
+
+  @include desktop {
+    display: flex;
+  }
+}
+
+.menuItem {
+  font-family: 'Paperozi', sans-serif;
+  font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+  font-weight: $font-weight-medium;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: $spacing-xs $spacing-sm;
+  position: relative;
+  transition: color $transition-normal $easing-default;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: $color-accent-primary;
+    transition: width $transition-normal $easing-default;
+  }
+
+  &:hover {
+    color: #ffffff;
+
+    &::after {
+      width: 80%;
+    }
+  }
+
+  &.active {
+    color: $color-accent-primary;
+
+    &::after {
+      width: 100%;
+    }
+  }
+
+  @include focus-visible;
+}
+
+.mobileToggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 24px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+
+  @include desktop {
+    display: none;
+  }
+
+  span {
+    width: 100%;
+    height: 2px;
+    background: #ffffff;
+    border-radius: 2px;
+    transition: all $transition-normal $easing-default;
+    transform-origin: center;
+  }
+
+  &.open {
+    span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    span:nth-child(2) {
+      opacity: 0;
+    }
+
+    span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+  }
+
+  @include focus-visible;
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background: rgba(2, 4, 7, 0.98);
+  backdrop-filter: blur(20px);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height $transition-normal $easing-default;
+
+  @include desktop {
+    display: none;
+  }
+
+  &.open {
+    max-height: 400px;
+  }
+}
+
+.mobileMenuList {
+  list-style: none;
+  margin: 0;
+  padding: $spacing-lg;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.mobileMenuItem {
+  font-family: 'Paperozi', sans-serif;
+  font-size: 1rem;
+  font-weight: $font-weight-medium;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: $spacing-sm;
+  text-align: left;
+  position: relative;
+  transition: color $transition-normal $easing-default;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 2px;
+    background: $color-accent-primary;
+    transition: width $transition-normal $easing-default;
+  }
+
+  &:hover {
+    color: #ffffff;
+    padding-left: $spacing-lg;
+
+    &::before {
+      width: 4px;
+    }
+  }
+
+  &.active {
+    color: $color-accent-primary;
+    padding-left: $spacing-lg;
+
+    &::before {
+      width: 4px;
+    }
+  }
+
+  @include focus-visible;
+}
+

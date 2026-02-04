@@ -1,0 +1,359 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+// ============================================
+// About Section Container
+// ============================================
+
+.about {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-3xl $spacing-lg;
+  background: rgb(2, 4, 7);
+
+  @include desktop {
+    padding: $spacing-5xl $spacing-3xl;
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+.container {
+  @include container;
+  width: 100%;
+  max-width: 1440px;
+
+  @media (max-width: 1023px) {
+    padding: 0 $spacing-md;
+  }
+}
+
+// ============================================
+// Content Wrapper
+// ============================================
+
+.contentWrapper {
+  width: 100%;
+
+  @include desktop {
+    // content가 전체 높이를 차지하도록
+    height: 100%;
+    min-height: 100vh;
+  }
+}
+
+// ============================================
+// Left Container - 제목 + 이미지 (고정될 영역)
+// ============================================
+
+.leftContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $spacing-4xl;
+  width: 100%;
+
+  @include desktop {
+    width: 30%;
+    flex-shrink: 0;
+    align-items: flex-start;
+    gap: $spacing-5xl;
+    // textArea와 동일한 높이를 유지하기 위해
+    height: 100%;
+  }
+}
+
+// ============================================
+// Title Area
+// ============================================
+
+.titleArea {
+  text-align: left;
+  width: 100%;
+
+  @include desktop {
+    width: 100%;
+  }
+}
+
+.title {
+  font-family: 'Paperozi', sans-serif;
+  font-size: clamp(1.75rem, 5vw, 3.25rem);
+  font-weight: $font-weight-extrabold;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+// ============================================
+// Content Area
+// ============================================
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4xl;
+  align-items: flex-start;
+  width: 100%;
+
+  @include desktop {
+    flex-direction: row;
+    align-items: flex-start; // 상단 정렬로 변경하여 ABOUT ME부터 보이도록
+    gap: $spacing-5xl;
+    // leftContainer와 textArea가 동일한 높이를 갖도록
+    height: 100%;
+    min-height: 100vh;
+    max-width: 100%;
+  }
+}
+
+// ============================================
+// Image Area - 텍스트 기반으로 히어로와 통일성 유지
+// ============================================
+
+.imageArea {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 300px;
+  position: relative;
+
+  @include desktop {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%; // 원형
+  overflow: hidden;
+  // 미묘한 그림자
+  box-shadow: 0 0 0 0.5px rgb(51, 113, 255);
+
+  @include transition(all);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+      0 12px 40px rgba(0, 230, 254, 0.2),
+      0 0 0 1px rgba(0, 230, 254, 0.15);
+  }
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // 히어로와 통일성 있는 그라데이션 배경
+  background: 
+    radial-gradient(ellipse 80% 80% at 50% 50%, rgba(96, 165, 250, 0.25) 0%, transparent 70%),
+    linear-gradient(135deg, rgba(0, 230, 254, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%),
+    $color-bg-secondary;
+}
+
+.aboutImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+// ============================================
+// Text Area
+// ============================================
+
+.textArea {
+  flex: 1;
+  width: 100%;
+  position: relative;
+
+  @include desktop {
+    width: 60%;
+    overflow: visible; // 형광펜이 잘리지 않도록
+    // leftContainer와 동일한 높이를 유지하기 위해
+    height: 100%;
+    // 이미지의 시작 위치와 텍스트의 시작 위치를 맞추기 위해
+    // titleArea 높이(대략 clamp 최대값 3.25rem * line-height 1.2 ≈ 3.9rem) + gap($spacing-5xl)만큼 padding-top 추가
+    // 정확한 계산: title 높이(3.9rem) + gap(8rem) = 약 11.9rem
+    // 간단하게 titleArea 높이를 대략 4rem으로 계산: 4rem + 8rem = 12rem
+    padding-top: calc(4rem + #{$spacing-5xl});
+  }
+}
+
+// 자기소개 섹션
+.introSection {
+  // 1024px 미만: 상하 여백 없이 콘텐츠 높이만큼만 차지
+  min-height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  @include desktop {
+    // 1024px 이상: 실제 콘텐츠 높이만큼만 차지
+    min-height: auto;
+    justify-content: flex-start;
+  }
+}
+
+// 스크롤 가능한 콘텐츠
+.scrollableContent {
+  // experienceSection의 margin-bottom과 동일한 값으로 설정하여 간격 일치
+  margin-top: $spacing-3xl;
+}
+
+// 첫 번째 계층: 큰 서브타이틀 (ABOUT ME보다 작게)
+.subtitle {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+  font-weight: 400;
+  color: #eeeeee;
+  line-height: 1.4;
+  margin-bottom: $spacing-2xl;
+  letter-spacing: -0.02em;
+  position: relative;
+  overflow: visible; // 형광펜이 잘리지 않도록
+}
+
+.highlight {
+  // 그라데이션의 첫 시작 파란색으로 단색 적용
+  position: relative;
+  display: inline-block;
+  padding: 0.2em 0;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 40%; // 텍스트 높이의 40%
+    background: linear-gradient(to right, $color-accent-primary, #1F4499);
+    border-radius: 10px;
+    z-index: 1; // 배경과 텍스트 사이
+    transform: rotate(-4deg);
+    transform-origin: bottom left;
+  }
+}
+
+.highlightText {
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.2em;
+  position: relative;
+  z-index: 2; // 박스 위에 텍스트가 오도록
+}
+
+.quote {
+  // 작은따옴표는 하얀색으로
+  color: #ffffff;
+  font-weight: $font-weight-extrabold;
+  font-size: 1.3em; // highlightStrong과 동일한 크기 유지
+}
+
+.highlightStrong {
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.5em; // 더 크게
+  // 위의 두 문장과 살짝 떨어뜨리기
+  display: inline-block;
+  margin-top: 0.75rem;
+  position: relative;
+}
+
+.periodWrapper {
+  white-space: nowrap;
+  display: inline-block;
+
+  @media (max-width: 360px) {
+    white-space: normal;
+  }
+}
+
+.period {
+  color: $color-accent-primary;
+  font-size: 2.5em; // 크기를 조금 줄임
+  display: inline-block;
+}
+
+// 두 번째 계층: 자기소개 텍스트
+.intro {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(0.9rem, 2.2vw, 1rem);
+  font-weight: $font-weight-regular;
+  color: #eeeeee;
+  line-height: $line-height-relaxed;
+  margin-bottom: 0;
+
+  p {
+    margin: 0 0 $spacing-md 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @include desktop {
+    font-size: 1rem;
+  }
+}
+
+// ============================================
+// Experience & Education Sections
+// ============================================
+
+.experienceSection {
+  margin-bottom: $spacing-3xl;
+}
+
+.educationSection {
+  margin-bottom: 0;
+}
+
+.sectionTitle {
+  font-family: 'Paperozi', sans-serif;
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: $font-weight-bold;
+  color: #ffffff;
+  // EDUCATION 간격 기준으로 맞추기 위해 margin-bottom 제거
+  // scrollableContent의 margin-top으로 간격 조정
+  margin-bottom: $spacing-lg;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.experienceList,
+.educationList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(0.95rem, 2vw, 1rem);
+  color: #eeeeee;
+  line-height: $line-height-relaxed;
+
+  li {
+    margin-bottom: $spacing-sm;
+    padding-left: $spacing-lg;
+    position: relative;
+
+    &::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: $color-accent-primary;
+      font-weight: $font-weight-bold;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

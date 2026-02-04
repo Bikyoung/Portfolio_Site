@@ -1,0 +1,166 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+// ============================================
+// Contact Section Container
+// ============================================
+
+.contact {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: $spacing-3xl $spacing-lg;
+  background: rgb(2, 4, 7);
+  overflow: hidden;
+
+  @include desktop {
+    padding: $spacing-5xl $spacing-3xl $spacing-5xl $spacing-3xl;
+  }
+}
+
+.container {
+  @include container;
+  width: 100%;
+  max-width: 1440px;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 1023px) {
+    padding: 0 $spacing-md;
+  }
+}
+
+// ============================================
+// Content Wrapper
+// ============================================
+
+.contentWrapper {
+  width: 100%;
+}
+
+// ============================================
+// Content Area
+// ============================================
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4xl;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  min-height: 50vh;
+
+  @include desktop {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: $spacing-5xl;
+  }
+}
+
+// ============================================
+// Header
+// ============================================
+
+.header {
+  text-align: left;
+  width: 100%;
+
+  @include desktop {
+    width: 30%;
+    flex-shrink: 0;
+    text-align: left;
+  }
+}
+
+.title {
+  font-family: 'Paperozi', sans-serif;
+  font-size: clamp(1.75rem, 5vw, 3.25rem);
+  font-weight: $font-weight-extrabold;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: $spacing-lg;
+}
+
+.highlightText {
+  font-family: 'Paperozi', sans-serif;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: $font-weight-regular;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.considerationWrapper {
+  display: inline;
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+
+  @media (max-width: 439px) {
+    display: block;
+  }
+}
+
+.period {
+  color: $color-accent-primary;
+  font-size: 2.5em;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  line-height: 0.9;
+  transform: translateX(100%);
+}
+
+.contactLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-md;
+  margin-top: 0;
+  width: 100%;
+
+  @include desktop {
+    flex-direction: row;
+    justify-content: center;
+    gap: $spacing-3xl;
+  }
+}
+
+.emailLink,
+.githubLink {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  justify-content: center;
+}
+
+.emailIcon,
+.githubIcon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.emailUrl,
+.githubUrl {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  color: #DDDDDD;
+  text-decoration: none;
+  transition: color $transition-normal $easing-default;
+
+  &:hover {
+    color: $color-accent-primary;
+  }
+}
+

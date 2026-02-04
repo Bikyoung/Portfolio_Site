@@ -1,0 +1,322 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+// ============================================
+// Project Section Container
+// ============================================
+
+.project {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-3xl $spacing-lg;
+  background: $color-bg-secondary;
+  // About 섹션과 자연스럽게 이어지는 그라데이션
+  background: linear-gradient(to bottom, $color-bg-primary 0%, $color-bg-secondary 50%, $color-bg-secondary 100%);
+  overflow: hidden;
+
+  // 배경 장식 요소
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(51, 113, 255, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @include desktop {
+    padding: $spacing-5xl $spacing-3xl $spacing-5xl $spacing-3xl;
+  }
+}
+
+.container {
+  @include container;
+  width: 100%;
+  max-width: 1440px;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 1023px) {
+    padding: 0 $spacing-md;
+  }
+}
+
+// ============================================
+// Content Wrapper
+// ============================================
+
+.contentWrapper {
+  width: 100%;
+}
+
+// ============================================
+// Content Area
+// ============================================
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4xl;
+  align-items: center;
+
+  @include desktop {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-5xl;
+  }
+}
+
+// ============================================
+// Header
+// ============================================
+
+.header {
+  text-align: left;
+  width: 100%;
+
+  @include desktop {
+    width: 30%;
+    flex-shrink: 0;
+    text-align: left;
+  }
+}
+
+.title {
+  font-family: 'Paperozi', sans-serif;
+  font-size: clamp(1.75rem, 5vw, 3.25rem);
+  font-weight: $font-weight-extrabold;
+  color: $color-text-primary;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: $spacing-lg;
+}
+
+.subtitle {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(0.9rem, 2.2vw, 1rem);
+  color: $color-text-secondary;
+  line-height: $line-height-relaxed;
+}
+
+// ============================================
+// Projects List
+// ============================================
+
+.projectsList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3xl;
+  width: 100%;
+
+  @include desktop {
+    width: 100%;
+    gap: $spacing-4xl;
+  }
+}
+
+// ============================================
+// Project Card
+// ============================================
+
+.projectCard {
+  display: flex;
+  flex-direction: column;
+  background: $color-bg-primary;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  box-shadow: $shadow-lg;
+  transition: all $transition-normal $easing-default;
+  width: 100%;
+
+  @include desktop {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-xl;
+  }
+}
+
+.projectImage {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: $color-bg-secondary;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  @media (max-width: 1023px) {
+    aspect-ratio: 4 / 3; // 높이를 더 늘리기 위해 비율 조정
+  }
+
+  @include desktop {
+    width: 50%;
+    aspect-ratio: auto;
+    min-height: 300px;
+  }
+}
+
+.projectImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(51, 113, 255, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  
+  span {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: $font-weight-bold;
+    color: $color-text-muted;
+    text-transform: uppercase;
+  }
+}
+
+.projectContent {
+  padding: $spacing-xl $spacing-lg;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+
+  @include desktop {
+    padding: $spacing-3xl $spacing-2xl;
+  }
+}
+
+.projectTitle {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-md;
+  letter-spacing: -0.02em;
+}
+
+.projectDescription {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(0.9rem, 2.2vw, 1rem);
+  color: $color-text-secondary;
+  line-height: $line-height-relaxed;
+  margin-bottom: $spacing-lg;
+
+  @media (max-width: 1023px) {
+    margin-bottom: $spacing-md;
+    line-height: 1.5;
+  }
+
+  flex: 1;
+}
+
+.projectTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-lg;
+
+  @media (max-width: 1023px) {
+    margin-bottom: $spacing-md;
+  }
+
+  @include desktop {
+    margin-bottom: $spacing-xl;
+  }
+}
+
+.projectLinks {
+  display: flex;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-accent-primary;
+  background: rgba(51, 113, 255, 0.1);
+  border: 1px solid rgba(51, 113, 255, 0.2);
+  border-radius: $radius-full;
+  padding: $spacing-xs $spacing-md;
+  @include transition(all);
+
+  &:hover {
+    background: rgba(51, 113, 255, 0.15);
+    border-color: rgba(51, 113, 255, 0.3);
+  }
+}
+
+.linkButton {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-accent-primary;
+  background: transparent;
+  border: 1px solid rgba(51, 113, 255, 0.3);
+  border-radius: $radius-md;
+  padding: $spacing-sm $spacing-lg;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  transition: all $transition-normal $easing-default;
+  cursor: pointer;
+
+  @media (max-width: 1023px) {
+    padding: $spacing-sm $spacing-md;
+  }
+
+  &:hover {
+    background: $color-accent-primary;
+    color: $color-bg-primary;
+    border-color: $color-accent-primary;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 230, 254, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.githubIcon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.chromeIcon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.figmaIcon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+
+

@@ -1,0 +1,402 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+// ============================================
+// Skill Section Container
+// ============================================
+
+.skill {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: $spacing-3xl $spacing-lg;
+  background: $color-bg-secondary;
+  // Project 섹션과 동일한 그라데이션
+  background: linear-gradient(to bottom, $color-bg-primary 0%, $color-bg-secondary 50%, $color-bg-secondary 100%);
+  overflow: hidden;
+
+  @include desktop {
+    padding: $spacing-5xl $spacing-3xl $spacing-5xl $spacing-3xl;
+  }
+}
+
+.container {
+  @include container;
+  width: 100%;
+  max-width: 1440px;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 1023px) {
+    padding: 0 $spacing-md;
+  }
+}
+
+// ============================================
+// Content Wrapper
+// ============================================
+
+.contentWrapper {
+  width: 100%;
+}
+
+// ============================================
+// Content Area
+// ============================================
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4xl;
+  align-items: flex-start;
+  width: 100%;
+
+  @include desktop {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-5xl;
+  }
+}
+
+// ============================================
+// Header
+// ============================================
+
+.header {
+  text-align: left;
+  width: 100%;
+
+  @include desktop {
+    width: 30%;
+    flex-shrink: 0;
+    text-align: left;
+  }
+}
+
+.title {
+  font-family: 'Paperozi', sans-serif;
+  font-size: clamp(1.75rem, 5vw, 3.25rem);
+  font-weight: $font-weight-extrabold;
+  color: $color-text-primary;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: $spacing-lg;
+}
+
+// ============================================
+// Marquee - 무한 스크롤 텍스트
+// ============================================
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-top: 0;
+  padding: 0;
+  
+  // 왼쪽 끝 페이드 효과
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 100%;
+    background: linear-gradient(to right, $color-bg-secondary 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  // 오른쪽 끝 페이드 효과
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 100%;
+    background: linear-gradient(to left, $color-bg-secondary 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 10;
+  }
+  
+  @include desktop {
+    margin-top: 0;
+    padding: 0;
+  }
+}
+
+.marqueeContent {
+  display: flex;
+  width: fit-content;
+  animation: marquee 30s linear infinite;
+  will-change: transform;
+}
+
+.marqueeGroup {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: $spacing-2xl;
+  padding: 0 $spacing-2xl;
+}
+
+.marqueeItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  opacity: 1;
+  gap: $spacing-sm;
+}
+
+.marqueeIcon {
+  width: clamp(3rem, 6vw, 5rem);
+  height: clamp(3rem, 6vw, 5rem);
+  min-width: clamp(3rem, 6vw, 5rem);
+  min-height: clamp(3rem, 6vw, 5rem);
+  max-width: clamp(3rem, 6vw, 5rem);
+  max-height: clamp(3rem, 6vw, 5rem);
+  object-fit: contain;
+  display: block;
+}
+
+.marqueeCustomIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(3rem, 6vw, 5rem);
+  height: clamp(3rem, 6vw, 5rem);
+  min-width: clamp(3rem, 6vw, 5rem);
+  min-height: clamp(3rem, 6vw, 5rem);
+  max-width: clamp(3rem, 6vw, 5rem);
+  max-height: clamp(3rem, 6vw, 5rem);
+  flex-shrink: 0;
+  
+  svg {
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+  }
+}
+
+.marqueeText {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  white-space: nowrap;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+// ============================================
+// Cards Container - 카드들이 좌우로 펼쳐진 수평 레이아웃
+// ============================================
+
+.cardsContainer {
+  position: relative;
+  width: 100%;
+  min-height: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-lg;
+  padding: 0;
+  overflow: hidden;
+
+  // 모바일: 3행 (2-2-1)
+  // 첫 4개는 2개씩, 마지막 1개는 가운데 정렬
+  @include mobile {
+    grid-template-columns: repeat(2, 1fr);
+    
+    // 마지막 카드(5번째)를 가운데 정렬
+    .skillItem:nth-child(5) {
+      grid-column: 1 / -1;
+      justify-self: center;
+      max-width: 50%;
+    }
+  }
+
+  // 태블릿: 2행 (3-2)
+  @include tablet {
+    grid-template-columns: repeat(3, 1fr);
+    overflow: hidden;
+    
+    // 두번째 행 컨테이너를 중앙에 배치
+    .secondRowContainer {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: center;
+      gap: $spacing-lg;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  // 데스크톱: 수평 배치 (기존 레이아웃)
+  @include desktop {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-xl;
+    min-height: auto;
+    padding: 0;
+  }
+}
+
+// ============================================
+// Second Row Container - 두 번째 행 컨테이너
+// ============================================
+
+.secondRowContainer {
+  display: contents; // 기본적으로 그리드 아이템으로 작동하지 않음
+
+  // 모바일: 그리드 아이템으로 작동
+  @include mobile {
+    display: contents;
+  }
+
+  // 태블릿: 두 번째 행을 중앙 정렬
+  @include tablet {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-lg;
+    margin: 0 auto;
+    grid-column: 1 / -1;
+  }
+
+  // 데스크톱: 그리드 아이템으로 작동하지 않음 (flex 레이아웃)
+  @include desktop {
+    display: contents;
+  }
+}
+
+// ============================================
+// Skill Item - 카드
+// ============================================
+
+.skillItem {
+  width: 100%;
+  padding: $spacing-5xl $spacing-xs;
+  background: transparent;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-lg;
+  border: 1px solid rgb(0, 230, 254);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 120px; // 참고 사이트와 유사한 높이
+
+  // 데스크톱에서만 애니메이션 관련 속성 적용
+  @include desktop {
+    flex: 1;
+    min-width: 0;
+    will-change: transform, opacity;
+    flex-shrink: 0;
+    padding: calc($spacing-5xl + $spacing-2xl) $spacing-sm;
+    height: 140px;
+  }
+}
+
+.skillName {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: $font-weight-bold;
+  color: $color-accent-primary;
+  margin-bottom: $spacing-md;
+  letter-spacing: -0.02em;
+}
+
+.skillDescription {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(0.9rem, 2.2vw, 1rem);
+  color: $color-text-secondary;
+  line-height: $line-height-relaxed;
+}
+
+// ============================================
+// Final Card - 그라데이션 테두리의 최종 카드
+// ============================================
+
+.finalCard {
+  // 모바일과 태블릿에서는 숨김
+  display: none;
+
+  // 데스크톱에서만 표시
+  @include desktop {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: calc($spacing-5xl + $spacing-2xl) $spacing-md; // 좌우 패딩 증가
+    background: rgba(0, 230, 254, 0.15);
+    border-radius: $radius-xl;
+    opacity: 0;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-width: 250px;
+    max-width: 350px;
+    height: 140px; // 기존 카드와 동일한 높이
+    will-change: opacity, transform;
+    z-index: 100; // 다른 카드들 위에 표시
+    margin-top: 0;
+
+    // 그라데이션 테두리 효과 (히어로 영역과 동일한 그라데이션)
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: $radius-xl;
+      padding: 3px; // 테두리 두께 증가
+      background: $color-accent-gradient; // 히어로 영역과 동일한 그라데이션
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+  }
+}
+
+.finalCardContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.finalSkillName {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: $font-weight-extrabold;
+  color: $color-text-primary;
+  letter-spacing: -0.02em;
+}
+
+.separator {
+  margin: 0 $spacing-xs;
+  color: $color-text-muted;
+  font-weight: $font-weight-regular;
+}
+

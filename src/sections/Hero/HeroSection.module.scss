@@ -1,0 +1,493 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+// ============================================
+// Hero Section Container - 그라데이션 배경
+// ============================================
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background: rgb(2, 4, 7);
+}
+
+// ============================================
+// Content Layer
+// ============================================
+
+.content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  @include container;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+// ============================================
+// Phase 2: 코너 요소들 - 중앙에서 하나의 사각형처럼 모여있음 (더 붙어있게)
+// ============================================
+
+.phase2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 15;
+}
+
+.cornerFrame {
+  position: relative;
+  width: 110px;
+  height: 110px;
+
+  @include desktop {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+.cornerPiece {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  opacity: 0; // 초기 상태: GSAP이 제어
+
+  @include desktop {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+// 중앙 시작 위치 - 4개가 하나의 사각형 프레임처럼 더 붙어있음
+.cornerTopLeftStart {
+  top: 0;
+  left: 0;
+  border-top: 3px solid;
+  border-left: 3px solid;
+  border-image: $color-accent-gradient 1;
+}
+
+.cornerTopRightStart {
+  top: 0;
+  right: 0;
+  border-top: 3px solid;
+  border-right: 3px solid;
+  border-image: $color-accent-gradient 1;
+}
+
+.cornerBottomLeftStart {
+  bottom: 0;
+  left: 0;
+  border-bottom: 3px solid;
+  border-left: 3px solid;
+  border-image: $color-accent-gradient 1;
+}
+
+.cornerBottomRightStart {
+  bottom: 0;
+  right: 0;
+  border-bottom: 3px solid;
+  border-right: 3px solid;
+  border-image: $color-accent-gradient 1;
+}
+
+// ============================================
+// Phase 3: 메인 콘텐츠 - 문이 열리며 드러나는 효과
+// ============================================
+
+.phase3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 100%;
+  padding: 0 $spacing-md;
+  // clip-path 애니메이션을 위한 설정
+  overflow: visible;
+  // 하드웨어 가속을 위해 will-change 추가
+  will-change: clip-path;
+
+  @include desktop {
+    padding: 0 $spacing-3xl;
+  }
+}
+
+// ============================================
+// Hero Title - ypine.com 스타일
+// ============================================
+
+.heroTitle {
+  position: relative;
+  display: flex;       // 가로로 나열
+  align-items: center; // 세로 중앙 정렬
+  justify-content: center;
+  transform: rotate(5deg); // 전체를 기울임
+  gap: clamp(1rem, 3vw, 2rem); 
+  width: 100%;
+  padding: clamp(5rem, 15vw, 10rem) 0;
+  overflow: visible;
+}
+
+// 중앙 콘텐츠 블록 (이름과 소개글을 하나로 묶음)
+.centerContent {
+  position: relative;
+  display: flex;
+  flex-direction: column; // 이름과 소개글은 세로로 나열
+  align-items: center;
+  flex-shrink: 0;         // 콘텐츠가 꺽쇠에 밀려 찌그러지지 않게 방지
+  isolation: isolate; // 내부 요소들의 z-index를 외부와 격리하여 확실히 제어
+}
+
+// 양쪽 꺽쇠
+.angleLeft,
+.angleRight {
+  width: clamp(3rem, 7vw, 8rem);
+  height: clamp(3rem, 7vw, 8rem);
+  flex-shrink: 0;
+  position: relative;
+  color: #ffffff;
+  user-select: none;
+  z-index: 0;
+}
+
+// I'm + 이름 그룹 - 자기 소개 (붙어있음)
+.introGroup {
+  position: relative;
+  z-index: 10; // 슬래시보다 높은 z-index 부여
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-lg; // I'm과 이름 사이 간격
+}
+
+// I'm 텍스트를 감싸는 라인 박스
+.imWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.imLineBox {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-lg;
+  background: transparent;
+
+  @include desktop {
+    padding: $spacing-md $spacing-xl;
+    gap: $spacing-md;
+  }
+}
+
+.imText {
+  font-family: 'Paperozi', sans-serif;
+  font-size: clamp(1.25rem, 3.2vw, 2rem);
+  font-weight: 300;
+  font-style: italic;
+  color: #ffffff;
+  letter-spacing: 0.06em;
+  position: relative;
+  z-index: 1;
+}
+
+.imEmoji {
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  animation: wave 2.5s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  line-height: 1;
+}
+
+// 메인 이름 블록
+.nameBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  line-height: 1;
+}
+
+// 이름을 감싸는 라인 박스
+.nameWrapper {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  z-index: 0; // 배경 레이어로 설정
+  background: rgb(2, 4, 7, 0.8); // 슬래시 라인을 가리기 위한 배경색
+}
+
+.angleLeft,
+.angleRight {
+  // 사용자가 요청한 웅장한 크기 유지
+  // viewBox를 조정했으므로 컨테이너 크기도 비례 조정하여 원래 꺽쇠 크기 유지
+  // 원래 viewBox "0 0 100 100"에서 새로운 viewBox "28 18 44 64"로 변경
+  // 가로 비율: 44/100 = 0.44, 세로 비율: 64/100 = 0.64
+  // 더 작은 비율(44%)을 기준으로 조정하여 원래 크기 유지
+  width: clamp(5.28rem, 9.68vw, 11rem); // 12rem * 0.44
+  height: clamp(7.68rem, 14.08vw, 16rem); // 12rem * 0.64
+  
+  color: #ffffff;
+  flex-shrink: 0;      // 중요: 화면이 좁아져도 꺽쇠가 찌그러지지 않게 함
+  position: relative;   // absolute 제거
+  z-index: 0;
+  user-select: none;
+
+  // 700px 이하에서 더 작게 조정
+  @media (max-width: 700px) {
+    width: clamp(3rem, 8vw, 5.28rem);
+    height: clamp(4.5rem, 12vw, 7.68rem);
+  }
+}
+
+.nameText {
+  font-family: 'Paperozi', sans-serif;
+  font-size: clamp(3rem, 12vw, 7rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  display: inline-block;
+  line-height: 1;
+  position: relative;
+  z-index: 11;
+  text-shadow: 3px 3px 1px #3371FF;
+  white-space: nowrap; // 텍스트가 줄바꿈되어 레이아웃이 깨지는 것을 방지
+}
+
+.letterO {
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+  // O 글자의 실제 크기와 정확히 일치하도록 설정
+  // inline-block이므로 내용물(O 글자)의 크기에 맞춰짐
+}
+
+.letterOText {
+  position: relative;
+  z-index: 2;
+}
+
+.smileImage {
+  position: absolute;
+  // O 글자의 정중앙에 배치
+  // .letterO의 정확한 중앙을 기준으로 함
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  // O 글자 크기의 85%로 설정
+  // .letterO의 크기를 기준으로 함 (O 글자의 실제 렌더링 크기)
+  width: 80%;
+  height: 80%;
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.letterR {
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+}
+
+.letterRText {
+  position: relative;
+  z-index: 2;
+}
+
+.diagonalLine {
+  position: absolute;
+  // 텍스트 흐름과 상관없이 중앙을 기준으로 배치
+  top: 55%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  width: clamp(8rem, 18vw, 20rem);
+  height: clamp(8rem, 18vw, 20rem);
+  color: #ffffff;
+  // 핵심: 다른 콘텐츠보다 낮은 z-index
+  z-index: -1;
+  pointer-events: none;
+}
+
+// PORTFOLIO 그룹 - 별도로 분리 (떨어져있음)
+.portfolioGroup {
+  position: relative;
+  z-index: 11;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+// PORTFOLIO를 감싸는 라인 박스
+.portfolioWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.portfolioLineBox {
+  position: relative;
+  
+  display: inline-block;
+  padding: $spacing-sm $spacing-lg;
+  z-index: 10; // 배경 레이어로 설정
+  /* 박스의 배경색이 슬래시(z-index: -1)를 완전히 덮어서 끊어지게 만듦 */
+  background: rgb(2, 4, 7, 0.8);
+
+  @include desktop {
+    padding: $spacing-md $spacing-xl;
+  }
+}
+
+.portfolioText {
+  font-family: 'Paperozi', sans-serif;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  letter-spacing: 0.05em;
+  display: block;
+  color: #ffffff;
+  text-transform: none;
+  position: relative;
+  z-index: 1;
+}
+
+.portfolioTextRegular {
+  font-weight: 400;
+}
+
+.portfolioTextName {
+  font-weight: 800;
+}
+
+// 하단 EXPLORE 힌트 - 히어로 영역 하단에 배치
+.exploreHint {
+  position: absolute;
+  bottom: $spacing-2xl;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 15;
+}
+
+.exploreText {
+  font-family: 'Paperozi', sans-serif;
+  font-size: $font-size-xs;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+// ============================================
+// Scroll Indicator - 그라데이션 테두리
+// ============================================
+
+.scrollIndicator {
+  position: absolute;
+  // EXPLORE 텍스트($spacing-2xl = 48px) 아래에 배치
+  // EXPLORE 텍스트 높이(약 1.5rem) + 간격을 고려하여 조금 더 간격 추가
+  bottom: $spacing-3xl;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-sm;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  @include transition(all);
+  @include focus-visible;
+
+  &:hover {
+    transform: translateX(-50%) translateY(-5px);
+
+    .scrollMouse {
+      border-color: #ffffff;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+    }
+
+    .scrollWheel {
+      background: #ffffff;
+    }
+  }
+
+  @include desktop {
+    // 데스크톱에서도 동일하게 적용
+    bottom: $spacing-3xl;
+  }
+}
+
+.scrollMouse {
+  width: 24px;
+  height: 38px;
+  // 완전히 비어있는 캡슐 형태 (안은 투명, 선만 보이도록)
+  background: transparent;
+  border-radius: 999px;
+  border: 2px solid #ffffff;
+  position: relative;
+  @include transition(all);
+  box-sizing: border-box;
+}
+
+.scrollWheel {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 8px;
+  background: #ffffff;
+  border-radius: $radius-full;
+  animation: scrollBounce 1.5s ease-in-out infinite;
+  @include transition(background);
+  z-index: 2; // ::before와 ::after 위에 표시되도록
+}
+
+// ============================================
+// Animations
+// ============================================
+
+@keyframes wave {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(15deg);
+  }
+  40% {
+    transform: rotate(-10deg);
+  }
+  60% {
+    transform: rotate(10deg);
+  }
+  80% {
+    transform: rotate(-5deg);
+  }
+}
+
+@keyframes scrollBounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-50%) translateY(10px);
+    opacity: 0.4;
+  }
+}
