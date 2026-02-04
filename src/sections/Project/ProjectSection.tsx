@@ -62,13 +62,16 @@ const ProjectSection = () => {
       <div className={styles.container}>
         <div className={styles.contentWrapper}>
           <div className={styles.content}>
-            <div className={styles.header}>
+            <div className={styles.header} data-aos="fade-up" data-aos-delay="0">
               <h2 className={styles.title}>PROJECT</h2>
             </div>
 
-            <div className={styles.projectsList}>
+            <div className={styles.projectsList} data-aos="fade-up" data-aos-delay="200">
               {projects.map((project) => (
-                <div key={project.id} className={styles.projectCard}>
+                <div 
+                  key={project.id} 
+                  className={styles.projectCard}
+                >
                   <div className={styles.projectImage}>
                     {project.id === 1 ? (
                       <img 

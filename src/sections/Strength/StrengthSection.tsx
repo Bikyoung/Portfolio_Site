@@ -37,11 +37,11 @@ const StrengthSection = () => {
       <div className={styles.container}>
         <div className={styles.contentWrapper}>
           <div className={styles.content}>
-            <div className={styles.header}>
+            <div className={styles.header} data-aos="fade-up" data-aos-delay="0">
               <h2 ref={titleRef} className={styles.title}>STRENGTH</h2>
             </div>
 
-            <div ref={cardsContainerRef} className={styles.cardsContainer}>
+            <div ref={cardsContainerRef} className={styles.cardsContainer} data-aos="fade-up" data-aos-delay="200">
               {/* 첫 번째 행: 첫 3개 카드 */}
               {strengths.slice(0, 3).map((strength, index) => (
                 <div key={strength.name} className={styles.strengthItem} data-strength-item={index}>

@@ -6,7 +6,6 @@ import aboutImage from '@assets/images/about_image.JPG'
  * soyoung-lee.com 스타일을 참고한 구조
  */
 const AboutSection = () => {
-
   return (
     <section id="about" className={styles.about} aria-label="About 섹션">
       <div className={styles.container}>
@@ -16,12 +15,12 @@ const AboutSection = () => {
             {/* 왼쪽 컨테이너: 제목 + 이미지 */}
             <div className={styles.leftContainer}>
               {/* 제목 영역 */}
-              <div className={styles.titleArea}>
+              <div className={styles.titleArea} data-aos="fade-up" data-aos-delay="0">
                 <h2 className={styles.title}>ABOUT ME</h2>
               </div>
 
               {/* 이미지 영역 */}
-              <div className={styles.imageArea}>
+              <div className={styles.imageArea} data-aos="fade-up" data-aos-delay="200">
                 <div className={styles.imageWrapper}>
                   <img 
                     src={aboutImage} 
@@ -33,7 +32,7 @@ const AboutSection = () => {
             </div>
 
             {/* 텍스트 영역 */}
-            <div className={styles.textArea}>
+            <div className={styles.textArea} data-aos="fade-up" data-aos-delay="400">
               {/* 자기소개 부분 - 처음에만 보임 */}
               <div data-about-intro className={styles.introSection}>
                 {/* 첫 번째 계층: 큰 서브타이틀 - ypine.com 스타일 */}

@@ -373,7 +373,8 @@
 // 하단 EXPLORE 힌트 - 히어로 영역 하단에 배치
 .exploreHint {
   position: absolute;
-  bottom: $spacing-2xl;
+  // 스크롤 인디케이터보다 위에 배치
+  bottom: $spacing-3xl;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -397,9 +398,9 @@
 
 .scrollIndicator {
   position: absolute;
-  // EXPLORE 텍스트($spacing-2xl = 48px) 아래에 배치
-  // EXPLORE 텍스트 높이(약 1.5rem) + 간격을 고려하여 조금 더 간격 추가
-  bottom: $spacing-3xl;
+  // EXPLORE 텍스트 아래에 배치
+  // 더 아래(바닥에 가깝게) 배치
+  bottom: $spacing-md;
   left: 50%;
   transform: translateX(-50%);
   z-index: 20;
@@ -429,7 +430,7 @@
 
   @include desktop {
     // 데스크톱에서도 동일하게 적용
-    bottom: $spacing-3xl;
+    bottom: $spacing-md;
   }
 }
 

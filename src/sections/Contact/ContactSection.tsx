@@ -9,17 +9,17 @@ const ContactSection = () => {
       <div className={styles.container}>
         <div className={styles.contentWrapper}>
           <div className={styles.content}>
-            <div className={styles.header}>
+            <div className={styles.header} data-aos="fade-up" data-aos-delay="0">
               <h2 className={styles.title}>CONTACT</h2>
             </div>
-            <p className={styles.highlightText}>
+            <p className={styles.highlightText} data-aos="fade-up" data-aos-delay="200">
               코드를 <span style={{ fontWeight: 800 }}>재검토</span>하며<br />
               항상 더 나은 구조를 <span className={styles.considerationWrapper}>
                 <span style={{ fontWeight: 800 }}>고민</span>합니다
                 <span className={styles.period}>.</span>
               </span>
             </p>
-            <div className={styles.contactLinks}>
+            <div className={styles.contactLinks} data-aos="fade-up" data-aos-delay="400">
               <div className={styles.githubLink}>
                 <img 
                   src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAADZ0lEQVR4nO1ZSWsUQRhtUdz35aaCiqioESSoIBFFDx5cQNz1puBFIRIQf0EQEUURb4KIBE8ieFAQjFvw6DZm6XqvOhmNE5VEPbjEJLYU9hAJk6mve6pHwXnwQUN3ve+9r7qWrva8CiqowCl83x9DcjnJTQB2mIiul5l73r+GMAxHaK3XkTwH4DmAfpJhoTD3ADwDcJZkjWn714R3dnaOV0od42+ECcPgaDabHVdW8QD2AugsQfjQeKO13p268I6OjmkkbzoUHg6JG0EQTE1FvNZ6EQCdovgw/1oBWOha/AqS78sgPoziHckqJ+Lb2trmA8iVUXxoAsDb9vb2eSWJD4JgLICn5RbPwXhR0gxF8tJfFB9GcSFp9dcAGCjSxU8B3CWpShCnDEexXjYaAFQnqX6TJfnO/LNKqTkkT5H8TrKX5GMA10ieNxFdG75eAN8A1Js2XgSt9S7LeHgQS7xSar2gequGtvN9f7ZZoYfjNffMM4V6m/Z8NWIDJK/bCJVSKz1HAFAtMNAgIvN9f7LpZgHhVlcGtNbbbPkAfG1paZlkJVNKbZcMQAC1rgwAqBUO+i0SsrMC8bnm5uYZrgy0trbOBNAlyHtGYuBuOaufB8k6Qd47ng0A2i0kAy6rn4fv+7OKrTtRbu3ZQPKzhaTZSwkAWiy98ElioM/pohLPwEOLgT4JyUcLyYu0DJDMWIrXLSEpurcB8KXYapsUuVxugpnrLcXzrUQAnthmgzS+XwHsFawDTa620C/DMBzpSnxjY+Mokq8E0+hFiYGDAgOGrN6VAZKnhTn3ScjmAvgpIDPPHHcgvk6ar9BOtiAA3JdUJCK+THJKXOHm+ITkFWkekvfiVGV/DGJjogvACXNuZOPOZrPTSZ6U7H34Ryil9ogNmEPYhCdvP4q9p+aeeSYB7+tMJjPaiwOSBxIkOiTgPRyXF5LBOxTm5JjkoxiJGlx+8XFQ/IPEp9jmiA9AjzCZ+Js1Oo6XiO/2fX+BVwqUUpuLnfnnI5PJTJRymk9DgYE+82PEcwEAR2x79biclsr3S8ZTXBNFZxCHBnpjTZkxTWwcbnpNwFWoR18rpTZ4ZfjJ0eDaAICrqf3cGEbAWpK3o+Q9cduT/GD2NwBuaa1Xp6NSJqQqCIIlcdsFQbBYKbU0HVUVVPD/4BfRfw0BahX2pgAAAABJRU5ErkJggg=="
