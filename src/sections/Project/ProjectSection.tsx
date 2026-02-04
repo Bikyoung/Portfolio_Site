@@ -52,8 +52,8 @@ const ProjectSection = () => {
       title: '개인 포트폴리오 사이트',
       description: '프로젝트 설명이 들어갑니다. 이 프로젝트는 사용자 경험을 개선하고 효율적인 웹 애플리케이션을 구현하기 위해 제작되었습니다.',
       tags: ['Vibe Coding', 'Cursor'],
-      githubUrl: 'https://github.com/Bikyoung/Choice_Island',
-      liveUrl: 'https://bk-choice-island.netlify.app/',
+      githubUrl: 'https://github.com/Bikyoung/Portfolio_Site',
+      liveUrl: 'https://bk-portfolio-site.netlify.app/',
     },
   ]
 
