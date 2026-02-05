@@ -61,12 +61,12 @@ const AboutSection = () => {
               {/* 스크롤 가능한 콘텐츠 - 이후에 보임 */}
               <div data-about-scrollable className={styles.scrollableContent}>
                 {/* 자격증 섹션 */}
-                <div className={styles.experienceSection}>
+                <div className={styles.certificationSection}>
                   <h4 className={styles.sectionTitle}>Certifications</h4>
-                  <ul className={styles.experienceList}>
-                    <li>2025.12 - 웹디자인개발기능사</li>
-                    <li>2025.11 - GTQ 1급</li>
-                    <li>2024.06 - 정보처리기사</li>
+                  <ul className={styles.certificationList}>
+                    <li><span className={styles.date}>2025.12</span>&nbsp;&nbsp;&nbsp;웹디자인개발기능사</li>
+                    <li><span className={styles.date}>2025.11</span>&nbsp;&nbsp;&nbsp;GTQ 1급</li>
+                    <li><span className={styles.date}>2024.06</span>&nbsp;&nbsp;&nbsp;정보처리기사</li>
                   </ul>
                 </div>
 
@@ -74,9 +74,9 @@ const AboutSection = () => {
                 <div className={styles.educationSection}>
                   <h4 data-about-education className={styles.sectionTitle}>EDUCATION</h4>
                   <ul className={styles.educationList}>
-                    <li>2025.12 - 2026.01 생성형 AI 기반 디지털 마케팅 수료 - 이젠아카데미</li>
-                    <li>2025.07 - 2025.12 UIUX 프론트엔드 개발 & 웹디자인 수료 - 이젠아카데미</li>
-                    <li>2018.03 - 2023.02 청주대학교 인공지능소프트웨어학과 졸업</li>
+                    <li><span className={styles.date}>2025.12 - 2026.01</span>&nbsp;&nbsp;&nbsp;생성형 AI 기반 디지털 마케팅 수료 - 이젠아카데미</li>
+                    <li><span className={styles.date}>2025.07 - 2025.12</span>&nbsp;&nbsp;&nbsp;UIUX 프론트엔드 개발 & 웹디자인 수료 - 이젠아카데미</li>
+                    <li><span className={styles.date}>2018.03 - 2023.02</span>&nbsp;&nbsp;&nbsp;청주대학교 인공지능소프트웨어학과 졸업</li>
                   </ul>
                 </div>
               </div>
