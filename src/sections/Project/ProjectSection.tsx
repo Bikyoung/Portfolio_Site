@@ -37,7 +37,7 @@ const ProjectSection = () => {
       tags: ['Vanilla JS', 'Canvas', 'GSAP', 'Swiper'],
       githubUrl: 'https://github.com/Bikyoung/landing_page',
       liveUrl: 'https://bk-anyone-telecom.netlify.app/',
-      figmaUrl: '#',
+      figmaUrl: 'https://buly.kr/5q8ozc6',
     },
     {
       id: 4,
