@@ -4,6 +4,7 @@ import genTeraBioImage from '@assets/images/GenTeraBio.webp'
 import anyoneTelecomImage from '@assets/images/anyone_telecom.webp'
 import choiceIslandImage from '@assets/images/choice_island.webp'
 import portfolioSiteImage from '@assets/images/portfolio_site.webp'
+import artisanImage from '@assets/images/artisan.webp'
 
 /**
  * Project Section - 프로젝트 영역
@@ -18,7 +19,7 @@ const ProjectSection = () => {
       description: '쿠팡 라이브의 서비스 정체성과 강점을 시각화하고 사용자 맞춤형 구조와 인터랙티브 UI를 개선한 리뉴얼 프로젝트입니다.',
       tags: ['Vanilla JS', 'Bootstrap', 'SCSS', 'GSAP', 'Swiper'],
       githubUrl: 'https://github.com/Bikyoung/Coupang_Live',
-      liveUrl: 'https://bk-coupang-live.netlify.app/',
+      liveUrl: 'https://bk-coupanglive.netlify.app/',
       figmaUrl: 'https://buly.kr/NlK6nj',
     },
     {
@@ -54,6 +55,14 @@ const ProjectSection = () => {
       tags: ['Vibe Coding', 'Cursor'],
       githubUrl: 'https://github.com/Bikyoung/Portfolio_Site',
       liveUrl: 'https://bk-portfolio-site.netlify.app/',
+    },
+    {
+      id: 6,
+      title: '아르티산',
+      description: '이 사이트는 고급 가전제품 판매 랜딩 사이트입니다.',
+      tags: ['Vibe Coding', 'Cursor'],
+      githubUrl: 'https://github.com/Bikyoung/Artisan',
+      liveUrl: 'https://app.netlify.com/projects/bk-artisan/overview',
     },
   ]
 
@@ -100,6 +109,12 @@ const ProjectSection = () => {
                     ) : project.id === 5 ? (
                       <img 
                         src={portfolioSiteImage} 
+                        alt={project.title}
+                        className={styles.projectImg}
+                      />
+                    ) : project.id === 6 ? (
+                      <img 
+                        src={artisanImage} 
                         alt={project.title}
                         className={styles.projectImg}
                       />
