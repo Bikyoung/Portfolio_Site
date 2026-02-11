@@ -3,8 +3,7 @@ import coupangLiveImage from '@assets/images/coupang_live.webp'
 import genTeraBioImage from '@assets/images/GenTeraBio.webp'
 import anyoneTelecomImage from '@assets/images/anyone_telecom.webp'
 import choiceIslandImage from '@assets/images/choice_island.webp'
-import portfolioSiteImage from '@assets/images/portfolio_site.webp'
-import artisanImage from '@assets/images/artisan.webp'
+import passLabImage from '@assets/images/pass_lab.webp' 
 
 /**
  * Project Section - 프로젝트 영역
@@ -19,26 +18,26 @@ const ProjectSection = () => {
       description: '쿠팡 라이브의 서비스 정체성과 강점을 시각화하고 사용자 맞춤형 구조와 인터랙티브 UI를 개선한 리뉴얼 프로젝트입니다.',
       tags: ['Vanilla JS', 'Bootstrap', 'SCSS', 'GSAP', 'Swiper'],
       githubUrl: 'https://github.com/Bikyoung/Coupang_Live',
-      liveUrl: 'https://bk-coupanglive.netlify.app/',
-      figmaUrl: 'https://buly.kr/NlK6nj',
+      liveUrl: 'https://bk-coupang-live.netlify.app/',
+      figmaUrl: 'https://www.figma.com/design/3rjKM26jNTCordLNSTf8Nk/%EC%BF%A0%ED%8C%A1-%EB%9D%BC%EC%9D%B4%EB%B8%8C?node-id=2433-266',
     },
     {
       id: 2,
       title: '젠테라바이오',
-      description: '기존 세포치료 기업들의 공통적적 한계를 분석하고 이를 보완한 이상적인 세포치료 기업 젠테라바이오를 가상으로 설계하여여, 해당 기업의 공식 웹사이트를 제작한 팀 프로젝트입니다.',
+      description: '프로젝트 설명이 들어갑니다. 이 프로젝트는 사용자 경험을 개선하고 효율적인 웹 애플리케이션을 구현하기 위해 제작되었습니다.',
       tags: ['JQuery', 'SCSS', 'GSAP', 'Swiper'],
       githubUrl: 'https://github.com/Bikyoung/GenTeraBio',
       liveUrl: 'https://genterabio.netlify.app/',
-      figmaUrl: 'https://buly.kr/3CPRnv7',
+      figmaUrl: 'https://www.figma.com/design/huVAcqP7LV2gTgh7Prl7Pj/%EC%A0%90%ED%85%8C%EB%9D%BC%EB%B0%94%EC%9D%B4%EC%98%A4-4%EC%A1%B0?node-id=1363-4558&t=deT4bQ5qz0fbcew6-1',
     },
     {
       id: 3,
       title: '애니원 텔레콤 리뉴얼',
-      description: '사용자의 이해와 행동을 자연스럽게 유도하기 위해 UI·UX와 정보 흐름을 강화하고, 애니원 텔레콤에 대한 신뢰를 형성하는 영역을 새로 추가한 프로젝트입니다.',
+      description: '프로젝트 설명이 들어갑니다. 이 프로젝트는 사용자 경험을 개선하고 효율적인 웹 애플리케이션을 구현하기 위해 제작되었습니다.',
       tags: ['Vanilla JS', 'Canvas', 'GSAP', 'Swiper'],
       githubUrl: 'https://github.com/Bikyoung/landing_page',
       liveUrl: 'https://bk-anyone-telecom.netlify.app/',
-      figmaUrl: 'https://buly.kr/5q8ozc6',
+      figmaUrl: '#',
     },
     {
       id: 4,
@@ -50,19 +49,11 @@ const ProjectSection = () => {
     },
     {
       id: 5,
-      title: '개인 포트폴리오 사이트',
-      description: '이 사이트는 저의 사고 방식과 작업 결과를 사용자가 빠르게 이해하고 확인할 수 있도록 설계한 개인 공간입니다.',
+      title: '온라인 강의 플랫폼 랜딩 페이지',
+      description: '가상의 온라인 자격증 강의 플랫폼 PASSLAB의 수강 신청 및 상담 전환을 목표로 제작된 랜딩페이지입니다.',
       tags: ['Vibe Coding', 'Cursor'],
-      githubUrl: 'https://github.com/Bikyoung/Portfolio_Site',
-      liveUrl: 'https://bk-portfolio-site.netlify.app/',
-    },
-    {
-      id: 6,
-      title: '아르티산',
-      description: '이 사이트는 고급 가전제품 판매 랜딩 사이트입니다.',
-      tags: ['Vibe Coding', 'Cursor'],
-      githubUrl: 'https://github.com/Bikyoung/Artisan',
-      liveUrl: 'https://app.netlify.com/projects/bk-artisan/overview',
+      githubUrl: 'https://github.com/Bikyoung/Pass_Lab',
+      liveUrl: 'https://bk-passlab.netlify.app/',
     },
   ]
 
@@ -71,16 +62,13 @@ const ProjectSection = () => {
       <div className={styles.container}>
         <div className={styles.contentWrapper}>
           <div className={styles.content}>
-            <div className={styles.header} data-aos="fade-up" data-aos-delay="0">
+            <div className={styles.header}>
               <h2 className={styles.title}>PROJECT</h2>
             </div>
 
-            <div className={styles.projectsList} data-aos="fade-up" data-aos-delay="200">
+            <div className={styles.projectsList}>
               {projects.map((project) => (
-                <div 
-                  key={project.id} 
-                  className={styles.projectCard}
-                >
+                <div key={project.id} className={styles.projectCard}>
                   <div className={styles.projectImage}>
                     {project.id === 1 ? (
                       <img 
@@ -108,13 +96,7 @@ const ProjectSection = () => {
                       />
                     ) : project.id === 5 ? (
                       <img 
-                        src={portfolioSiteImage} 
-                        alt={project.title}
-                        className={styles.projectImg}
-                      />
-                    ) : project.id === 6 ? (
-                      <img 
-                        src={artisanImage} 
+                        src={passLabImage} 
                         alt={project.title}
                         className={styles.projectImg}
                       />
