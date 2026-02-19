@@ -1,6 +1,7 @@
 import styles from './ProjectSection.module.scss'
 import coupangLiveImage from '@assets/images/coupang_live.webp'
 import genTeraBioImage from '@assets/images/GenTeraBio.webp'
+import luviaImage from '@assets/images/luvia.webp'
 import anyoneTelecomImage from '@assets/images/anyone_telecom.webp'
 import choiceIslandImage from '@assets/images/choice_island.webp'
 import passLabImage from '@assets/images/pass_lab.webp' 
@@ -16,7 +17,7 @@ const ProjectSection = () => {
       id: 1,
       title: '쿠팡 라이브 리뉴얼',
       description: '쿠팡 라이브의 서비스 정체성과 강점을 시각화하고 사용자 맞춤형 구조와 인터랙티브 UI를 개선한 리뉴얼 프로젝트입니다.',
-      tags: ['Vanilla JS', 'Bootstrap', 'SCSS', 'GSAP', 'Swiper'],
+      tags: ['Bootstrap', 'SCSS', 'Vanilla JS', 'GSAP', 'Swiper'],
       githubUrl: 'https://github.com/Bikyoung/Coupang_Live',
       liveUrl: 'https://bk-coupang-live.netlify.app/',
       figmaUrl: 'https://www.figma.com/design/3rjKM26jNTCordLNSTf8Nk/%EC%BF%A0%ED%8C%A1-%EB%9D%BC%EC%9D%B4%EB%B8%8C?node-id=2433-266',
@@ -24,23 +25,32 @@ const ProjectSection = () => {
     {
       id: 2,
       title: '젠테라바이오',
-      description: '프로젝트 설명이 들어갑니다. 이 프로젝트는 사용자 경험을 개선하고 효율적인 웹 애플리케이션을 구현하기 위해 제작되었습니다.',
-      tags: ['JQuery', 'SCSS', 'GSAP', 'Swiper'],
+      description: '이상적인 세포치료 기업 ‘젠테라바이오’를 가상으로 설계하고, 해당 기업의 공식 홍보 웹사이트를 제작한 팀 프로젝트입니다.',
+      tags: ['SCSS', 'JQuery', 'GSAP', 'Swiper'],
       githubUrl: 'https://github.com/Bikyoung/GenTeraBio',
       liveUrl: 'https://genterabio.netlify.app/',
       figmaUrl: 'https://www.figma.com/design/huVAcqP7LV2gTgh7Prl7Pj/%EC%A0%90%ED%85%8C%EB%9D%BC%EB%B0%94%EC%9D%B4%EC%98%A4-4%EC%A1%B0?node-id=1363-4558&t=deT4bQ5qz0fbcew6-1',
     },
     {
       id: 3,
+      title: '루비아 피부과',
+      description: 'PHP를 활용하여 WordPress 커스텀 테마를 처음부터 직접 개발하여 가상의 피부과 브랜드 ‘luvia’ 웹사이트에 적용한 프로젝트입니다.',
+      tags: ['PHP', 'WordPress', 'Kakao Maps API', 'SCSS', 'Vanilla JS'],
+      githubUrl: 'https://github.com/Bikyoung/Luvia',
+      liveUrl: 'https://bkluvia.dothome.co.kr/',
+      figmaUrl: 'https://www.figma.com/design/HDSjF1nLUeqe3Yf19A81mC/LUVIA?node-id=0-1&t=xzinOUyvFghGDqHV-1',
+    },
+    {
+      id: 4,
       title: '애니원 텔레콤 리뉴얼',
-      description: '프로젝트 설명이 들어갑니다. 이 프로젝트는 사용자 경험을 개선하고 효율적인 웹 애플리케이션을 구현하기 위해 제작되었습니다.',
+      description: '기존 애니원 텔레콤 사이트의 정보 구조와 사용자 경험 개선을 위해 UI/UX를 재설계한 프로젝트입니다.',
       tags: ['Vanilla JS', 'Canvas', 'GSAP', 'Swiper'],
       githubUrl: 'https://github.com/Bikyoung/landing_page',
       liveUrl: 'https://bk-anyone-telecom.netlify.app/',
       figmaUrl: '#',
     },
     {
-      id: 4,
+      id: 5,
       title: '선택의 섬',
       description: '연애 리얼리티의 몰입감 있는 상황 설계를 통해 사용자의 연애 스타일을 발견하는 인터랙티브 웹 콘텐츠입니다.',
       tags: ['Vibe Coding', 'Cursor'],
@@ -48,7 +58,7 @@ const ProjectSection = () => {
       liveUrl: 'https://bk-choice-island.netlify.app/',
     },
     {
-      id: 5,
+      id: 6,
       title: '온라인 강의 플랫폼 랜딩 페이지',
       description: '가상의 온라인 자격증 강의 플랫폼 PASSLAB의 수강 신청 및 상담 전환을 목표로 제작된 랜딩페이지입니다.',
       tags: ['Vibe Coding', 'Cursor'],
@@ -84,17 +94,23 @@ const ProjectSection = () => {
                       />
                     ) : project.id === 3 ? (
                       <img 
-                        src={anyoneTelecomImage} 
+                        src={luviaImage} 
                         alt={project.title}
                         className={styles.projectImg}
                       />
                     ) : project.id === 4 ? (
                       <img 
-                        src={choiceIslandImage} 
+                        src={anyoneTelecomImage} 
                         alt={project.title}
                         className={styles.projectImg}
                       />
                     ) : project.id === 5 ? (
+                      <img 
+                        src={choiceIslandImage} 
+                        alt={project.title}
+                        className={styles.projectImg}
+                      />
+                    ) : project.id === 6 ? (
                       <img 
                         src={passLabImage} 
                         alt={project.title}
