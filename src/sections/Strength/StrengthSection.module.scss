@@ -271,11 +271,9 @@
     padding: calc($spacing-5xl + $spacing-2xl) $spacing-md; // 좌우 패딩 증가
     background: radial-gradient(
       circle at center,
-      rgba(255, 219, 219, 0.25) 0%,
-      rgba(251, 255, 199, 0.25) 25%,
-      rgba(191, 248, 203, 0.25) 50%,
-      rgba(169, 249, 255, 0.25) 75%,
-      rgba(205, 171, 255, 0.25) 100%
+      rgba(74, 144, 226, 0.3) 0%,
+      rgba(91, 155, 213, 0.25) 50%,
+      rgba(155, 89, 182, 0.3) 100%
     );
     border-radius: $radius-xl;
     opacity: 0;
@@ -303,7 +301,7 @@
         rgba(191, 248, 203, 0.6) 50%,
         rgba(169, 249, 255, 0.6) 75%,
         rgba(205, 171, 255, 0.6) 100%
-      ); // 위에서 아래로 5개 색상 그라데이션
+      ); // 위에서 아래로 5개 카드 색상 그라데이션
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);

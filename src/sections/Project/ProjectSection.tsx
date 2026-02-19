@@ -19,7 +19,7 @@ const ProjectSection = () => {
       description: '쿠팡 라이브의 서비스 정체성과 강점을 시각화하고 사용자 맞춤형 구조와 인터랙티브 UI를 개선한 리뉴얼 프로젝트입니다.',
       tags: ['Bootstrap', 'SCSS', 'Vanilla JS', 'GSAP', 'Swiper'],
       githubUrl: 'https://github.com/Bikyoung/Coupang_Live',
-      liveUrl: 'https://bk-coupang-live.netlify.app/',
+      liveUrl: 'https://bk-coupanglive.netlify.app/',
       figmaUrl: 'https://www.figma.com/design/3rjKM26jNTCordLNSTf8Nk/%EC%BF%A0%ED%8C%A1-%EB%9D%BC%EC%9D%B4%EB%B8%8C?node-id=2433-266',
     },
     {
