@@ -39,6 +39,8 @@ const SkillSection = () => {
       )
     },
     { name: 'SCSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg' },
+    { name: 'PHP', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg' },
+    { name: 'WordPress', icon: 'https://img.icons8.com/fluency/96/wordpress.png' },
     { name: 'Java', icon: javaLogo },
     { name: 'Cursor', icon: cursorLogo },
     { name: 'Photoshop', icon: photoshopIcon },
