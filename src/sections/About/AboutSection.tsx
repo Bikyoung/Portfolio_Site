@@ -74,7 +74,7 @@ const AboutSection = () => {
                 <div className={styles.educationSection}>
                   <h4 data-about-education className={styles.sectionTitle}>EDUCATION</h4>
                   <ul className={styles.educationList}>
-                    <li><span className={styles.date}>2025.12 - 2026.01</span>&nbsp;&nbsp;&nbsp;생성형 AI 기반 디지털 마케팅 수료 - 이젠아카데미</li>
+                    <li><span className={styles.date}>2025.12 - 2026.02</span>&nbsp;&nbsp;&nbsp;생성형 AI 기반 디지털 마케팅 수료 - 이젠아카데미</li>
                     <li><span className={styles.date}>2025.07 - 2025.12</span>&nbsp;&nbsp;&nbsp;UIUX 프론트엔드 개발 & 웹디자인 수료 - 이젠아카데미</li>
                     <li><span className={styles.date}>2018.03 - 2023.02</span>&nbsp;&nbsp;&nbsp;청주대학교 인공지능소프트웨어학과 졸업</li>
                   </ul>

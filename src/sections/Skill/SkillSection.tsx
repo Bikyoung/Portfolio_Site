@@ -1,27 +1,51 @@
-import styles from './SkillSection.module.scss'
-import photoshopIcon from '@assets/images/photoshop_icon.webp'
-import htmlLogo from '@assets/images/html_logo.png'
-import cssLogo from '@assets/images/css_logo.png'
-import jQueryLogo from '@assets/images/jQuery_logo.png'
-import javaLogo from '@assets/images/java_logo.png'
-import cursorLogo from '@assets/images/cursor_logo.png'
+import React from 'react';
+import styles from './SkillSection.module.scss';
+import photoshopIcon from '@assets/images/photoshop_icon.webp';
+import htmlLogo from '@assets/images/html_logo.png';
+import cssLogo from '@assets/images/css_logo.png';
+import jQueryLogo from '@assets/images/jQuery_logo.png';
+import javaLogo from '@assets/images/java_logo.png';
+import cursorLogo from '@assets/images/cursor_logo.png';
+
+interface SkillItem {
+  name: string;
+  icon?: string;
+  customSvg?: React.ReactNode;
+  showText?: boolean;
+}
 
 /**
  * Skill Section - 기술 스택 영역
  */
-const SkillSection = () => {
-
-  const skills = [
+const SkillSection: React.FC = () => {
+  const skills: SkillItem[] = [
     { 
       name: 'HTML', 
-      icon: htmlLogo
+      icon: htmlLogo,
+      // 원하시는 경우 HTML용 SVG를 추가하거나 아이콘으로 대체할 수 있습니다.
     },
     { 
       name: 'CSS', 
-      icon: cssLogo
+      icon: cssLogo,
     },
-    { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+    { 
+      name: 'React',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg'
+    },
+    { 
+      name: 'JavaScript', 
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' 
+    },
+    { 
+      name: 'TypeScript',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg'
+    },
     { name: 'jQuery', icon: jQueryLogo },
+    { name: 'SCSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg' },
+    { 
+      name: 'Tailwind CSS',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg'
+    },
     { 
       name: 'Bootstrap', 
       icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg',
@@ -38,14 +62,13 @@ const SkillSection = () => {
         </svg>
       )
     },
-    { name: 'SCSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg' },
     { name: 'PHP', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg' },
     { name: 'WordPress', icon: 'https://img.icons8.com/fluency/96/wordpress.png' },
     { name: 'Java', icon: javaLogo },
-    { name: 'Cursor', icon: cursorLogo },
-    { name: 'Photoshop', icon: photoshopIcon },
     { name: 'Figma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
-  ]
+    { name: 'Photoshop', icon: photoshopIcon },
+    { name: 'Cursor', icon: cursorLogo },
+  ];
 
   return (
     <section id="skill" className={styles.skill} aria-label="Skill 섹션">
@@ -61,28 +84,29 @@ const SkillSection = () => {
               <div className={styles.marqueeContent}>
                 <div className={styles.marqueeGroup}>
                   {skills.map((skill, index) => {
-                    const showText = (skill as any).showText || false;
+                    const showText = skill.showText || false;
                     return (
                       <div key={`skill-${index}`} className={styles.marqueeItem}>
-                        {(skill.name === 'HTML' || skill.name === 'CSS' || skill.name === 'Bootstrap' || skill.name === 'Java') && skill.customSvg ? (
+                        {skill.customSvg ? (
                           <div className={styles.marqueeCustomIcon}>{skill.customSvg}</div>
                         ) : (
-                          <img src={skill.icon} alt={skill.name} className={styles.marqueeIcon} />
+                          skill.icon && <img src={skill.icon} alt={skill.name} className={styles.marqueeIcon} />
                         )}
                         {showText && <span className={styles.marqueeText}>{skill.name}</span>}
                       </div>
                     );
                   })}
                 </div>
+                
                 <div className={styles.marqueeGroup} aria-hidden="true">
                   {skills.map((skill, index) => {
-                    const showText = (skill as any).showText || false;
+                    const showText = skill.showText || false;
                     return (
                       <div key={`skill-duplicate-${index}`} className={styles.marqueeItem}>
-                        {(skill.name === 'HTML' || skill.name === 'CSS' || skill.name === 'Bootstrap' || skill.name === 'Java') && skill.customSvg ? (
+                        {skill.customSvg ? (
                           <div className={styles.marqueeCustomIcon}>{skill.customSvg}</div>
                         ) : (
-                          <img src={skill.icon} alt={skill.name} className={styles.marqueeIcon} />
+                          skill.icon && <img src={skill.icon} alt={skill.name} className={styles.marqueeIcon} />
                         )}
                         {showText && <span className={styles.marqueeText}>{skill.name}</span>}
                       </div>
@@ -95,8 +119,7 @@ const SkillSection = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default SkillSection
-
+export default SkillSection;

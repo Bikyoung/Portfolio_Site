@@ -2,6 +2,7 @@ import styles from './ProjectSection.module.scss'
 import coupangLiveImage from '@assets/images/coupang_live.webp'
 import genTeraBioImage from '@assets/images/GenTeraBio.webp'
 import luviaImage from '@assets/images/luvia.webp'
+import motorPlanetImage from '@assets/images/motor_planet.webp'
 import anyoneTelecomImage from '@assets/images/anyone_telecom.webp'
 import choiceIslandImage from '@assets/images/choice_island.webp'
 import passLabImage from '@assets/images/pass_lab.webp' 
@@ -33,6 +34,15 @@ const ProjectSection = () => {
     },
     {
       id: 3,
+      title: '모토플래닛',
+      description: '중고차 기업 ‘모토플래닛’을 가상으로 설계하고, 해당 기업의 랜딩 페이지를 제작한 프로젝트입니다.',
+      tags: ['Tailwind', 'React', 'TypeScript', 'Swiper'],
+      githubUrl: 'https://github.com/Bikyoung/Motor_Planet',
+      liveUrl: 'https://bk-motor-planet.netlify.app',
+      figmaUrl: 'https://www.figma.com/design/rC4fQxIOKZP6BvSbYo7NqB/%EB%AA%A8%ED%86%A0-%ED%94%8C%EB%9E%98%EB%8B%9B?node-id=0-1&t=xn5fRk8X2t67HOj0-1',
+    },
+    {
+      id: 4,
       title: '루비아 피부과',
       description: 'PHP를 활용하여 WordPress 커스텀 테마를 처음부터 직접 개발하여 가상의 피부과 브랜드 ‘luvia’ 웹사이트에 적용한 프로젝트입니다.',
       tags: ['PHP', 'WordPress', 'Kakao Maps API', 'SCSS', 'Vanilla JS'],
@@ -41,16 +51,16 @@ const ProjectSection = () => {
       figmaUrl: 'https://www.figma.com/design/HDSjF1nLUeqe3Yf19A81mC/LUVIA?node-id=0-1&t=xzinOUyvFghGDqHV-1',
     },
     {
-      id: 4,
+      id: 5,
       title: '애니원 텔레콤 리뉴얼',
       description: '기존 애니원 텔레콤 사이트의 정보 구조와 사용자 경험 개선을 위해 UI/UX를 재설계한 프로젝트입니다.',
       tags: ['Vanilla JS', 'Canvas', 'GSAP', 'Swiper'],
       githubUrl: 'https://github.com/Bikyoung/landing_page',
       liveUrl: 'https://bk-anyone-telecom.netlify.app/',
-      figmaUrl: '#',
+      figmaUrl: 'https://www.figma.com/design/hNZJwzcbANJh8taCDCVU5S/%EC%95%A0%EB%8B%88%EC%9B%90-%ED%85%94%EB%A0%88%EC%BD%A4?node-id=2-32&t=Eln7jmBKkBeF3CFT-1',
     },
     {
-      id: 5,
+      id: 6,
       title: '선택의 섬',
       description: '연애 리얼리티의 몰입감 있는 상황 설계를 통해 사용자의 연애 스타일을 발견하는 인터랙티브 웹 콘텐츠입니다.',
       tags: ['Vibe Coding', 'Cursor'],
@@ -58,7 +68,7 @@ const ProjectSection = () => {
       liveUrl: 'https://bk-choice-island.netlify.app/',
     },
     {
-      id: 6,
+      id: 7,
       title: '온라인 강의 플랫폼 랜딩 페이지',
       description: '가상의 온라인 자격증 강의 플랫폼 PASSLAB의 수강 신청 및 상담 전환을 목표로 제작된 랜딩페이지입니다.',
       tags: ['Vibe Coding', 'Cursor'],
@@ -94,23 +104,29 @@ const ProjectSection = () => {
                       />
                     ) : project.id === 3 ? (
                       <img 
-                        src={luviaImage} 
+                        src={motorPlanetImage} 
                         alt={project.title}
                         className={styles.projectImg}
                       />
                     ) : project.id === 4 ? (
                       <img 
-                        src={anyoneTelecomImage} 
+                        src={luviaImage} 
                         alt={project.title}
                         className={styles.projectImg}
                       />
                     ) : project.id === 5 ? (
                       <img 
-                        src={choiceIslandImage} 
+                        src={anyoneTelecomImage} 
                         alt={project.title}
                         className={styles.projectImg}
                       />
                     ) : project.id === 6 ? (
+                      <img 
+                        src={choiceIslandImage} 
+                        alt={project.title}
+                        className={styles.projectImg}
+                      />
+                    ) : project.id === 7 ? (
                       <img 
                         src={passLabImage} 
                         alt={project.title}
@@ -158,7 +174,7 @@ const ProjectSection = () => {
                         </svg>
                         Live Demo
                       </a>
-                      {project.figmaUrl && project.id !== 4 && (
+                      {project.figmaUrl && (
                         <a
                           href={project.figmaUrl}
                           className={styles.linkButton}
